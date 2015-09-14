@@ -17,4 +17,9 @@ div.details(data-id='#{spot._id}')
 		.map-link.col-xs-6
 			span.glyphicon.glyphicon-pushpin(aria-hidden='true')
 			| #{spot.mapURL}
+
+	button(type='button', class='remove-spot-btn btn btn-default')
+		.glyphicon.glyphicon-minus(aria-hidden='true')
+		| Remove spot
+
 .location

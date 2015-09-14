@@ -1,22 +1,33 @@
 $(document).ready(function() {
 	console.log('ready');
 	// Event handlers
-	$("#add-spot").submit(function( event ) {
+	
+	$('.add-spot-btn').click(function(event) {
+		$('#add-spot').trigger('reset');
+		$('#add-spot').fadeIn();
+	});
+
+	$('#add-spot').submit(function(event) {
 		event.preventDefault();
 		var spot = $('form#add-spot').serializeObject();
 
-		saveSpot(spot);
+		console.log(spot);
 
+		saveSpot(spot);
 		createSpotHTML(spot);
+
 	});
 
-	function createSpotSuccess(arguments) {
-		$('#add-spot').html('<h2>Thanks!</h2>');
+	$('.remove-spot-btn').click(function(event) {
+		event.preventDefault();
+		var id = $(this).parent().attr('data-id');
+		console.log(id);
 
-		var timer = setTimeout(function() {
-			$('#form-modal').modal('hide');
-		}, 600);
-	}
+		removeSpot(id);
+
+
+	});
+
 
 	function createSpotHTML(spot) {
 
@@ -25,10 +36,7 @@ $(document).ready(function() {
 
 	// Functions
 
-	function loadFromDB(arguments) {
-		
-	};
-	
+
 	function saveSpot(spot) {
 		console.log('Saving %s', spot);
 		$.ajax({
@@ -41,6 +49,40 @@ $(document).ready(function() {
 			}
 		});
 		
+	};
+
+
+
+	function removeSpot(id) {
+
+		var data = { id : id };
+
+		$.ajax({
+			type: 'POST',
+			url: '/remove',
+			context: document.body,
+			data: data,
+			success: function(){
+				removeSpotSuccess(id);
+			}
+		});
+	};
+
+	function createSpotSuccess(name) {
+
+		$('#add-spot').fadeOut();
+
+		var timer = setTimeout(function() {
+			$('#form-modal').modal('hide');
+		}, 800);
+	};
+
+	function removeSpotSuccess(id) {
+
+		$("div[data-id='" + id + "']").parent().fadeOut();
+
+		console.log('Spot removed.');
+
 	};
 
 });

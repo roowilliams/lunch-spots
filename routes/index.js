@@ -1,43 +1,42 @@
 var express = require('express');
 var router = express.Router();
-
-var data = {
-
-	spots: [
-
-		{ 
-			name: 'Papa Poulet',
-			description: 'Blah blah',
-			tip: 'The club sandwich is fucking awesome',
-			cost: '8-15',
-			mapURL: 'http://maps.google.com',
-			mapThumbNail: '/images/map.png',
-			likes: 0,
-			dislikes: 0
-		},
-
-		{ 
-			name: 'Chopt',
-			description: 'Fake salad.',
-			tip: 'Don\'t go here.',
-			cost: '8-15',
-			mapURL: 'http://maps.google.com',
-			mapThumbNail: '/images/map.png',
-			likes: 0,
-			dislikes: 0
-		},
-
-	]
-};
+var spots = require('../controllers/spots');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Anomnom', data : data });
+	spots.getAll(function(spots) {
+		var data = {};
+		data.spots = spots;
+		console.log(data);
+		res.render('index', { title: 'Anomnom', data : data });
+	});
+	
 });
 
 router.post('/add', function(req, res) {
-  res.send('ok');
-  console.log(req.body);
+	
+	var spot = req.body;
+	spots.add(spot);
+	res.sendStatus(200);
+
+});
+
+router.get('/admin', function(req, res) {
+	spots.getAll(function(spots) {
+		var data = {};
+		data.spots = spots;
+		console.log(data);
+		res.render('admin', { title: 'Anomnom Admin', data : data });
+	});
+});
+
+router.post('/remove', function(req, res) {
+
+	var data = req.body;
+	console.log(data);
+	spots.removeSpot(data.id);
+	res.sendStatus(200);
+
 });
 
 module.exports = router;

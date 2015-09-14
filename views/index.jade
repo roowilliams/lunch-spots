@@ -8,60 +8,43 @@ block content
 
 	div#form-modal.modal.fade(role='dialog')
 		.modal-dialog
-			form(id='add-spot', role='form',  data-toggle='validator')
-				.form-group
-					label(for='name').
-						Spot name
-					input#name.form-control(name='spot[name]', type='text', placeholder='eg. Papa Poulet', data-error='Give it a name.', required)
-					div.help-block-with-errors
-				
-				.form-group
-					label(for='description').
-						Description
-					input#description.form-control(name='spot[description]', type='text', placeholder='eg. mazin\' rotisserie chicken, chicken sandwiches, sides, everything chicken.', data-error='Tell people what they can get.', required)
-					div.help-block-with-errors
+			.dialog
+				form(id='add-spot', role='form',  data-toggle='validator')
+					.form-group
+						label(for='name').
+							Spot name
+						input#name.form-control(name='name', type='text', placeholder='eg. Papa Poulet', data-error='Give it a name.', required)
+						div.help-block-with-errors
+					
+					.form-group
+						label(for='description').
+							Description
+						input#description.form-control(name='description', type='text', placeholder='eg. mazin\' rotisserie chicken, chicken sandwiches, sides, everything chicken.', data-error='Tell people what they can get.', required)
+						div.help-block-with-errors
 
-				.form-group
-					label(for='mapurl').
-						Google Maps URL
-					input#mapurl.form-control(name='spot[mapurl]', type='text')
-
-				.row
-					.col-xs-6
-						.form-group
-							label(for='tip').
-								Inside Tip
-							input#tip.form-control(name='spot[tip]', type='text', placeholder='eg. The club sandwich is killuh')
-
-					.col-xs-6
-						.form-group
-							label(for='cost').
-								Cost
-							input#cost.form-control(name='spot[cost]', type='text', placeholder='eg. 8-15')
-
-				button#submit-spot.btn.btn-default(type='submit').
-					Submit
-
-	ul#spots-list
-		each spot in data.spots
-			li.spot
-				.details
-					h1.name.
-						#{spot.name}
-
-					.description.
-						#{spot.description}
-
-					.tip
-						span.glyphicon.glyphicon-star-empty(aria-hidden='true')
-						| #{spot.tip}
+					.form-group
+						label(for='mapurl').
+							Google Maps URL
+						input#mapurl.form-control(name='mapURL', type='text')
 
 					.row
-						.cost.col-xs-6
-							span.glyphicon.glyphicon-usd(aria-hidden='true')
-							| #{spot.cost}
+						.col-xs-6
+							.form-group
+								label(for='tip').
+									Inside Tip
+								input#tip.form-control(name='tip', type='text', placeholder='eg. The club sandwich is killuh')
 
-						.map-link.col-xs-6
-							span.glyphicon.glyphicon-pushpin(aria-hidden='true')
-							| #{spot.mapURL}
-				.location
+						.col-xs-6
+							.form-group
+								label(for='cost').
+									Cost
+								input#cost.form-control(name='cost', type='text', placeholder='eg. 8-15')
+
+					button#submit-spot.btn.btn-default(type='submit').
+						Submit
+
+	ul#spots-list
+		if data
+			each spot in data.spots
+				li.spot
+					include spot

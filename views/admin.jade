@@ -1,0 +1,10 @@
+extends layout
+
+block content
+
+
+	ul#spots-list
+		if data
+			each spot in data.spots
+				li.spot
+					include adminspot
