@@ -1,0 +1,45 @@
+.container {
+	margin: 20px;
+}
+
+.header {
+	margin: 50px 0 50px 0;
+}
+
+#add-spot {
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+}
+
+#spots-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.spot {
+	margin-top: 20px;
+	padding: 20px;
+	background-color: #edf0dd;
+}
+
+.name {
+
+}
+
+.description {
+
+}
+
+.tip {
+
+/*	background-image: url('images/wink.png');
+	background-size: 24px 24px;
+	background-position: left center; 
+	background-repeat: no-repeat;*/
+}
+
+.cost {
+
+}
+
