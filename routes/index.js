@@ -4,12 +4,12 @@ var spots = require('../controllers/spots');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-	spots.getAll(function(spots) {
-		var data = {};
-		data.spots = spots;
-		console.log(data);
+
+	getAllSpots(sendData);
+
+	function sendData(data) {
 		res.render('index', { title: 'Anomnom', data : data });
-	});
+	}
 	
 });
 
@@ -17,26 +17,42 @@ router.post('/add', function(req, res) {
 	
 	var spot = req.body;
 	spots.add(spot);
-	res.sendStatus(200);
+
+	console.log(spot);
+	
+	res.render('spot', { spot : spot });
+	
 
 });
 
 router.get('/admin', function(req, res) {
-	spots.getAll(function(spots) {
-		var data = {};
-		data.spots = spots;
-		console.log(data);
+	getAllSpots(sendData);
+
+	function sendData(data) {
 		res.render('admin', { title: 'Anomnom Admin', data : data });
-	});
+	}
+	// spots.getAll(function(spots) {
+	// 	var data = {};
+	// 	data.spots = spots;
+	// 	console.log(data);
+	// 	res.render('admin', { title: 'Anomnom Admin', data : data });
+	// });
 });
 
 router.post('/remove', function(req, res) {
 
 	var data = req.body;
-	console.log(data);
 	spots.removeSpot(data.id);
 	res.sendStatus(200);
 
 });
+
+function getAllSpots(callback) {
+	spots.getAll(function(spots) {
+		var data = {};
+		data.spots = spots;
+		callback(data);
+	});
+}
 
 module.exports = router;

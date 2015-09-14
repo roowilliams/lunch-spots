@@ -14,7 +14,7 @@ $(document).ready(function() {
 		console.log(spot);
 
 		saveSpot(spot);
-		createSpotHTML(spot);
+
 
 	});
 
@@ -29,10 +29,6 @@ $(document).ready(function() {
 	});
 
 
-	function createSpotHTML(spot) {
-
-	};
-
 
 	// Functions
 
@@ -44,8 +40,8 @@ $(document).ready(function() {
 			url: '/add',
 			context: document.body,
 			data: spot,
-			success: function(){
-				createSpotSuccess(spot.name);
+			success: function(response){
+				createSpotSuccess(response);
 			}
 		});
 		
@@ -68,13 +64,22 @@ $(document).ready(function() {
 		});
 	};
 
-	function createSpotSuccess(name) {
+	function createSpotSuccess(response) {
 
 		$('#add-spot').fadeOut();
 
 		var timer = setTimeout(function() {
+
+			//
+			// Add thank you msg here
+			// 
+
 			$('#form-modal').modal('hide');
 		}, 800);
+
+		$('#spots-list').prepend('<li class="spot">' + response + '</li>');
+
+
 	};
 
 	function removeSpotSuccess(id) {
