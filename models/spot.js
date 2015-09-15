@@ -19,6 +19,7 @@ var spotSchema = new Schema({
 	tip: String,
 	mapURL: String,
 	mapThumbnail: String,
+	addedBy: String,
 	upvotes: Number,
 	downvotes: Number,
 	created_at: Date,

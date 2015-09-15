@@ -2,35 +2,6 @@ var Spot = require('../models/spot');
 
 var spots = {
 
-	data :{
-
-		spots: [
-
-		{ 
-			name: 'Papa Poulet',
-			description: 'Blah blah',
-			tip: 'The club sandwich is fucking awesome',
-			cost: '8-15',
-			mapURL: 'http://maps.google.com',
-			mapThumbNail: '/images/map.png',
-			upvotes: 0,
-			downvotes: 0
-		},
-
-		{ 
-			name: 'Chopt',
-			description: 'Fake salad.',
-			tip: 'Don\'t go here.',
-			cost: '8-15',
-			mapURL: 'http://maps.google.com',
-			mapThumbNail: '/images/map.png',
-			upvotes: 0,
-			downvotes: 0
-		},
-
-		]
-	},
-
 	getAll : function(cb) {
 
 		Spot.find({}, function(err, spots) {
@@ -78,10 +49,6 @@ var spots = {
 
 
 }
-
-
-
-
 
 
 module.exports = spots;

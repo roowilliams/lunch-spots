@@ -1,10 +1,12 @@
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	color: #333;
+	background-color: #f6f6f6;
 }
 
 a {
-  color: #00B7FF;
+  color: #D11818;
 }
 
 .container {
@@ -20,16 +22,47 @@ a {
 	background-color: #fff;
 	border-radius: 10px;
 }
+.msg {
+	opacity: 0;
+}
 
 #spots-list {
 	list-style-type: none;
 	padding: 0;
 }
 
+#spots-list li .dasher {
+	display: block;
+	border-bottom: 2px dashed #222;
+	width: 150px;
+	margin: 40px auto 80px auto;
+}
+
+.logo {
+	display: block;
+	margin: 0 auto;
+}
+
 .spot {
 	margin-top: 20px;
-	padding: 20px;
-	background-color: #edf0dd;
+	background-image: url('/images/nom-220x90-2x.png');
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	background-size: 110px 45px;
+	padding: 10px 10px 60px;
+	margin-bottom: 60px;
+	background-color: #fff;
+	-webkit-box-shadow: 1px 1px 1px 1px rgba(227,227,227,1);
+	-moz-box-shadow: 1px 1px 1px 1px rgba(227,227,227,1);
+	box-shadow: 1px 1px 1px 1px rgba(227,227,227,1);
+}
+
+.spot h1 {
+	border-top: 2px dashed #222;
+	border-bottom: 2px dashed #222;
+	padding: 10px;
+	letter-spacing: -1px;
+	text-align: center;
 }
 
 .name {
@@ -37,18 +70,29 @@ a {
 }
 
 .description {
-
+	margin: 0 10px 10px;
 }
 
 .tip {
-
-/*	background-image: url('images/wink.png');
-	background-size: 24px 24px;
-	background-position: left center; 
-	background-repeat: no-repeat;*/
+	margin: 0 10px 20px;
+	font-size: 12px;
+	padding-bottom: 10px;
+	border-bottom: 2px dashed #222;
 }
 
 .cost {
 
+}
+
+.map-link {
+	text-align: right;
+}
+
+.header {
+}
+
+.add-spot-btn {
+	display: block;
+	margin: 0 auto;
 }
 

@@ -2,13 +2,17 @@ extends layout
 
 block content
 
-	p Gimme your favourite food spots!
+	h2.tagline
+		small Anomaly's favourite food spots.
 
 
 
 	div#form-modal.modal.fade(role='dialog')
 		.modal-dialog
 			.dialog
+				.msg
+					h3.msg.alert.alert-success.
+						Spot added. Thanks!
 				form(id='add-spot', role='form',  data-toggle='validator')
 					.form-group
 						label(for='name').
@@ -25,25 +29,30 @@ block content
 					.form-group
 						label(for='mapurl').
 							Google Maps URL
-						input#mapurl.form-control(name='mapURL', type='text')
+						input#mapurl.form-control(name='mapURL', type='text', placeholder='eg. https://www.google.com/maps/place/Papa+Poule/@40.7207045,-73.9983234,17z/data=!4m2!3m1!1s0x0:0xd0acf017d51e25cb')
 
 					.row
-						.col-xs-6
+						.col-md-6
 							.form-group
 								label(for='tip').
 									Inside Tip
 								input#tip.form-control(name='tip', type='text', placeholder='eg. The club sandwich is killuh')
 
-						.col-xs-6
+						.col-md-6
 							.form-group
 								label(for='cost').
 									Cost
 								input#cost.form-control(name='cost', type='text', placeholder='eg. 8-15')
 
+					.form-group
+						label(for='added-by').
+							Your name
+						input#added-by.form-control(name='addedBy', type='text')
+
 					button#submit-spot.btn.btn-default(type='submit').
 						Submit
 
-	ul#spots-list
+	ul#spots-list.col-sm-4
 		if data
 			each spot in data.spots.reverse()
 				li.spot

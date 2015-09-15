@@ -2,19 +2,22 @@ div.details(data-id='#{spot._id}')
 	h1.name.
 		#{spot.name}
 
-	.description.
+	p.description.
 		#{spot.description}
 
-	.tip
+	p.tip
 		span.glyphicon.glyphicon-star-empty(aria-hidden='true')
-		| #{spot.tip}
+		|  #{spot.tip}
 
 	.row
 		.cost.col-xs-6
 			span.glyphicon.glyphicon-usd(aria-hidden='true')
-			| #{spot.cost}
+			|  #{spot.cost}
 
 		.map-link.col-xs-6
-			span.glyphicon.glyphicon-pushpin(aria-hidden='true')
-			| #{spot.mapURL}
-.location
+			span.glyphicon.glyphicon-map-marker(aria-hidden='true')
+			a(href='#{spot.mapURL}', target='_blank')  Map
+
+	p.added-by
+		span.glyphicon.glyphicon-heart(aria-hidden='true')
+		|  #{spot.addedBy}

@@ -5,18 +5,26 @@ $(document).ready(function() {
 	$('.add-spot-btn').click(function(event) {
 		$('#add-spot').trigger('reset');
 		$('#add-spot').fadeIn();
+		$('.msg').fadeTo(0,0);
+		
 	});
 
-	$('#add-spot').submit(function(event) {
-		event.preventDefault();
-		var spot = $('form#add-spot').serializeObject();
+	$('#add-spot').validator().on('submit', function(event) {
 
-		console.log(spot);
+		if (event.isDefaultPrevented()) {
 
-		saveSpot(spot);
+		} 
+		else {
+			event.preventDefault();
+			var spot = $('form#add-spot').serializeObject();
 
+			console.log(spot);
 
+			saveSpot(spot);
+		}
 	});
+
+
 
 	$('.remove-spot-btn').click(function(event) {
 		event.preventDefault();
@@ -69,13 +77,17 @@ $(document).ready(function() {
 		$('#add-spot').fadeOut();
 
 		var timer = setTimeout(function() {
+			$('.msg').fadeTo(200,1);
+		}, 500);
+
+		var timer1 = setTimeout(function() {
 
 			//
 			// Add thank you msg here
 			// 
 
 			$('#form-modal').modal('hide');
-		}, 800);
+		}, 1400);
 
 		$('#spots-list').prepend('<li class="spot">' + response + '</li>');
 
