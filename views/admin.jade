@@ -5,6 +5,6 @@ block content
 
 	ul#spots-list
 		if data
-			each spot in data.spots
+			each spot in data.spots.reverse()
 				li.spot
 					include adminspot

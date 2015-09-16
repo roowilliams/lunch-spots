@@ -1,21 +1,23 @@
 $(document).ready(function() {
-	console.log('ready');
+	var spotSubmitted = false; // Flag for catching doubleclicks on submit button
 	// Event handlers
 	
 	$('.add-spot-btn').click(function(event) {
 		$('#add-spot').trigger('reset');
 		$('#add-spot').fadeIn();
 		$('.msg').fadeTo(0,0);
+		spotSubmitted = false;
 		
 	});
 
 	$('#add-spot').validator().on('submit', function(event) {
 
-		if (event.isDefaultPrevented()) {
+		if (event.isDefaultPrevented() || spotSubmitted) {
 
 		} 
 		else {
 			event.preventDefault();
+			spotSubmitted = true;
 			var spot = $('form#add-spot').serializeObject();
 
 			console.log(spot);
