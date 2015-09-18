@@ -22,8 +22,7 @@ div.details(data-id='#{spot._id}')
 		span.glyphicon.glyphicon-user(aria-hidden='true')
 		|  #{spot.addedBy}
 
-
-if section === "admin"
+	if section === "admin"
 		button(type='button', class='remove-spot-btn btn btn-default')
 			.glyphicon.glyphicon-minus(aria-hidden='true')
 			| Remove spot
