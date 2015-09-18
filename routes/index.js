@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 	getAllSpots(sendData);
 
 	function sendData(data) {
-		res.render('index', { title: 'Anomnom', data : data });
+		res.render('index', { title: 'Anomnom', section: 'index', data : data });
 	}
 	
 });
