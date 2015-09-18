@@ -29,7 +29,7 @@ router.get('/admin', function(req, res) {
 	getAllSpots(sendData);
 
 	function sendData(data) {
-		res.render('admin', { title: 'Anomnom Admin', data : data });
+		res.render('index', { title: 'Anomnom Admin', section: 'admin', data : data });
 	}
 	// spots.getAll(function(spots) {
 	// 	var data = {};

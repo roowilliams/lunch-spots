@@ -21,3 +21,9 @@ div.details(data-id='#{spot._id}')
 	p.added-by
 		span.glyphicon.glyphicon-user(aria-hidden='true')
 		|  #{spot.addedBy}
+
+
+if section === "admin"
+	button(type='button', class='remove-spot-btn btn btn-default')
+		.glyphicon.glyphicon-minus(aria-hidden='true')
+		| Remove spot
